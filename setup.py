@@ -6,7 +6,7 @@ setup(
     py_modules=['dms'],
     install_requires=[
         'requests',
-        'optparse'
+        'argparse'
     ],
     entry_points='''
         [console_scripts]
