@@ -5,7 +5,7 @@ name='dockerscanner',
     version='1.0.0',
     packages=find_packages(),
     py_modules=['dockerscanner'],
-    entry_points=    entry_points='''
+    entry_points='''
         [console_scripts]
         dockerscanner=dockerscanner:main
     ''',
