@@ -1,6 +1,6 @@
 # Docker Misconfig Scanner
 
-Docker Misconfig Scanner is a tool to find unauthenticated Docker registry API for misconfigurations, downloads blobs for a specified repository and tag, and stores them in a directory. The script prompts the user for the API endpoint URL, target repository, target tag, and output directory.
+Docker Misconfig Scanner is a tool that find unauthenticated Docker registry API for misconfigurations, downloads blobs for a specified repository and tag, and stores them in a directory. The script prompts the user for the API endpoint URL, target repository, target tag, and output directory.
 
 ## Installation
 
