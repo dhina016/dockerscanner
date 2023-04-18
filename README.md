@@ -13,7 +13,7 @@ python setup.py install
 ```
 
 ```
-usage: dockerscanner.py -u URL
+usage: dockerscanner -u URL
 
 optional arguments:
   -u URL, --url URL  Specify the Docker API URL (e.g. https://IP:Port)
