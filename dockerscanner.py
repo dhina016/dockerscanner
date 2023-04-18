@@ -23,42 +23,46 @@ url = options.url
 def list_repos():
     try:
         req = requests.get(url + "/" + apiversion + "/_catalog", verify=False)
+        req.raise_for_status()
         return json.loads(req.text)["repositories"]
-    except requests.exceptions.RequestException as e:
+    except (requests.exceptions.RequestException, json.decoder.JSONDecodeError) as e:
         print(f"[-] Error: {e}")
         sys.exit()
 
 def find_tags(reponame):
     try:
         req = requests.get(url + "/" + apiversion + "/" + reponame + "/tags/list", verify=False)
+        req.raise_for_status()
         print("\n")
         data = json.loads(req.content)
         if "tags" in data:
             return data["tags"]
-    except requests.exceptions.RequestException as e:
+    except (requests.exceptions.RequestException, json.decoder.JSONDecodeError) as e:
         print(f"[-] Error: {e}")
         sys.exit()
 
 def list_blobs(reponame, tag):
     try:
         req = requests.get(url + "/" + apiversion + "/" + reponame + "/manifests/" + tag, verify=False)
+        req.raise_for_status()
         data = json.loads(req.content)
         if "fsLayers" in data:
             for x in data["fsLayers"]:
                 curr_blob = x['blobSum'].split(":")[1]
                 if curr_blob not in final_list_of_blobs:
                     final_list_of_blobs.append(curr_blob)
-    except requests.exceptions.RequestException as e:
+    except (requests.exceptions.RequestException, json.decoder.JSONDecodeError) as e:
         print(f"[-] Error: {e}")
         sys.exit()
 
 def download_blobs(reponame, blobdigest, dirname):
     try:
         req = requests.get(url + "/" + apiversion + "/" + reponame + "/blobs/sha256:" + blobdigest, verify=False)
+        req.raise_for_status()
         filename = "%s.tar.gz" % blobdigest
         with open(dirname + "/" + filename, 'wb') as test:
             test.write(req.content)
-    except requests.exceptions.RequestException as e:
+    except (requests.exceptions.RequestException, json.decoder.JSONDecodeError) as e:
         print(f"[-] Error: {e}")
         sys.exit()
 
