@@ -1,13 +1,13 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='dms',
-    version='1.0',
+name='dockerscanner',
+    version='1.0.0',
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'dms = dms.main:main',
-        ],
+            'dockerscanner = dockerscanner.main:main'
+        ]
     },
     install_requires=[
         'requests',
