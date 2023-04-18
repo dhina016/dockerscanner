@@ -65,6 +65,9 @@ $$$$$$$  |\$$$$$$  |\$$$$$$$\ $$ | \$$\ \$$$$$$$\ $$ |     \$$$$$$  |\$$$$$$$\\$
     """)
     if url != "spam":
         list_of_repos = list_repos()
+        if not list_of_repos:
+            print("[-] No repositories found. Exiting...")
+            sys.exit()
         print("\n[+] List of Repositories:\n")
         for x in list_of_repos:
             print(x)
