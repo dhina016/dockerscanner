@@ -1,6 +1,6 @@
 import os
 import json
-import optparse
+import argparse
 import requests
 
 # pulls Docker Images from unauthenticated docker registry api.
@@ -14,11 +14,10 @@ final_list_of_blobs = []
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-parser = optparse.OptionParser()
-parser.add_option('-u', '--url', action="store", dest="url", help="URL Endpoint for Docker Registry API v2. Eg https://IP:Port", default="spam")
-options, args = parser.parse_args()
+parser = argparse.ArgumentParser()
+parser.add_argument('-u', '--url', action="store", dest="url", help="URL Endpoint for Docker Registry API v2. Eg https://IP:Port", default="spam")
+options = parser.parse_args()
 url = options.url
-
 
 def list_repos():
     req = requests.get(url + "/" + apiversion + "/_catalog", verify=False)
