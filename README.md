@@ -8,7 +8,7 @@ To install Docker Misconfig Scanner, clone the repository and run `setup.py`:
 
 ```bash
 git clone https://github.com/dhina016/dockerscanner.git
-cd docker-misconfig-scanner
+cd dockerscanner
 python setup.py install
 ```
 
